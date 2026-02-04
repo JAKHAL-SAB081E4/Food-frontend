@@ -6,7 +6,7 @@ import axios from "axios"
 
 const LoginPopup = ({setShowLogin}) => {
 
-const{url,setToken}=useContext(StoreContext)
+const{setToken}=useContext(StoreContext)
 
 const[currState,setCurrState]=useState("Login")
 const [data,setData]=useState({
@@ -25,15 +25,13 @@ const onChangeHandler =(event)=>{
 
 const onLogin=async (event)=>{
      event.preventDefault()
-    let newUrl=url;
-    if (currState==='Login') {
+    const apiUrl =
+    currState==='Login'? 
         `${import.meta.env.VITE_REACT_URL}/api/user/login` 
-    }
-    else{
-        `${import.meta.env.VITE_REACT_URL}/api/user/register`
-    }
+:  `${import.meta.env.VITE_REACT_URL}/api/user/register`
+    
     try{
-    const response =await axios.post(newUrl,data);
+    const response =await axios.post(apiUrl,data);
 
     if (response.data.success) {
         setToken(response.data.token);
