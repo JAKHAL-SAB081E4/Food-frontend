@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PlaceOrder = () => {
   const { getTotalCartAmount, token, food_list, cartItems } =
@@ -17,6 +18,7 @@ const PlaceOrder = () => {
     country: "",
     phone: "",
   });
+  const navigate= useNavigate();
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -39,7 +41,6 @@ const PlaceOrder = () => {
       items: orderItems,
       amount: getTotalCartAmount() + 2,
     };
-
     try {
       let response = await axios.post(
         `${import.meta.env.VITE_REACT_URL}/api/order/place`,
@@ -47,8 +48,7 @@ const PlaceOrder = () => {
         { headers: { token } },
       );
       if (response.data.success) {
-        const { session_url } = response.data;
-        window.location.replace(session_url);
+      navigate("/myorders")
       } else {
         alert(response.data.message || "Order failed");
       }
