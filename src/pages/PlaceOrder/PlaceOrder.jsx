@@ -1,11 +1,12 @@
-import React, { useContext,useEffect,useState,useNavigate } from "react";
+import React, { useContext,useEffect,useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PlaceOrder = () => {
   const { getTotalCartAmount,token,food_list,cartItems,url} = useContext(StoreContext);
-
+  
   const [data,setData]=useState({
     firstName:"",
     lastName:"",
@@ -17,6 +18,7 @@ const PlaceOrder = () => {
     country:"",
     phone:""
   })
+  const navigate=useNavigate();
 
   const onChangeHandler=(event)=>{
     const name=event.target.name;
@@ -48,7 +50,6 @@ const PlaceOrder = () => {
         alert("Error");
       }
 
-      const navigate=useNavigate();
       
       useEffect(()=>{
       if (!token) {
