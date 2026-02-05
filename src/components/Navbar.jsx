@@ -22,7 +22,7 @@ const Navbar = ({setShowLogin}) => {
   return (
     <div className='navbar'>
       <Link to='/'><button className='logo'>Cravelt.</button></Link>
-      <ul className="Navbar-menu">
+      <ul className="navbar-menu">
         <Link to='/' onClick={()=>setMenu("Home")}       className={menu==="Home"?"active":""}>Home</Link>
         <a href='#explore-menu' onClick={()=>setMenu("Menu")}       className={menu==="Menu"?"active":""}>Menu</a>
         <a href='#app-download' onClick={()=>setMenu("Mobile-app")} className={menu==="Mobile-app"?"active":""}>Mobile-app</a>
