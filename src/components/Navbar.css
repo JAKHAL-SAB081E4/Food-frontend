@@ -3,6 +3,8 @@
   display:flex;
   align-items:center;
   justify-content:space-between;
+  /* position:relative; */
+  /* z-index:10; */
 }
 
 .navbar .logo{
@@ -96,14 +98,17 @@
   position:absolute;
   right:0;
   display:none;
+  top:120%;
+  z-index:999;
 }
 
 .navbar-profile:hover .nav-profile-dropdown{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  /* gap:5px; */
   background:#fff2ef;
-  padding:12px 25px;
+  padding:8px 8px;
+  
   border-radius:4px;
   border:1px solid tomato;
   list-style:none;
