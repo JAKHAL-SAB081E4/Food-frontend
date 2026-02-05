@@ -8,6 +8,9 @@ import Footer from './components/Footer/Footer'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
+import ScrollToHash from './components/ScrollToHash'
+
+
 
 const App = () => {
 
@@ -18,6 +21,7 @@ const App = () => {
      {showLogin?<LoginPopup setShowLogin={setShowLogin} />:<></> }
     <div className='app'>
       <Navbar setShowLogin={setShowLogin}/>
+      <ScrollToHash />
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/cart' element={<Cart />} />
